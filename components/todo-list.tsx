@@ -19,7 +19,7 @@ const TodoList = ({ userId, handleEdit }: TodoListProps) => {
     const user = auth.currentUser;
 
     if (!user) {
-      // Handle case where user is not authenticated
+      alert("Please Login");
       return;
     }
 
