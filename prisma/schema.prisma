@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @unique
+  email String @unique
+  todos Todo[]
+}
+
+model Todo {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isCompleted Boolean? @default(false)
+  userId String
+  user User @relation(fields: [userId], references: [id])
+}
