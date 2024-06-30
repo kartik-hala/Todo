@@ -30,7 +30,7 @@ const TodoList = ({ userId, handleEdit }: TodoListProps) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ userId: user.uid }), // Pass userId in the JSON body
+          body: JSON.stringify({ userId: user.uid }),
         });
 
         if (!response.ok) {
